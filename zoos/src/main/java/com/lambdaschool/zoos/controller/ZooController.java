@@ -19,6 +19,5 @@ public class ZooController {
         return zoorepos.findAll();
     }
 
-    @PutMapping
 
 }
