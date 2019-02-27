@@ -14,7 +14,7 @@ public class Zoo {
 
     private String zooname;
 
-    @OneToMany(mappedBy = "telephone")
+    @OneToMany(mappedBy = "zoo")
     @JsonIgnore
     private Set<Telephone> telephones;
 

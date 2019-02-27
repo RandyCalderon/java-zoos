@@ -3,7 +3,6 @@ package com.lambdaschool.zoos.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
-import java.util.Set;
 
 @Entity
 @Table(name = "telephone")
@@ -15,7 +14,6 @@ public class Telephone {
     private String phonetype;
     private String phonenumber;
 
-    // Foreignkey zooid
     @ManyToOne
     @JoinColumn(name = "zooid")
     @JsonIgnore
