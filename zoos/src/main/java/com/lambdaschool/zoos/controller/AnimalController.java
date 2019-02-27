@@ -22,7 +22,7 @@ public class AnimalController {
     @Autowired
     AnimalRepository animalrepos;
 
-    @ApiOperation(value = "List All  Customers", response = List.class)
+    @ApiOperation(value = "List all Customers", response = List.class)
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Successfully retrieved list"),
             @ApiResponse(code = 401, message = "You are not authorized to view the resource"),

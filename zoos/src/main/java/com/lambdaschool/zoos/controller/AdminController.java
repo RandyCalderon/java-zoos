@@ -6,12 +6,14 @@ import com.lambdaschool.zoos.model.Zoo;
 import com.lambdaschool.zoos.repository.AnimalRepository;
 import com.lambdaschool.zoos.repository.TelephoneRepository;
 import com.lambdaschool.zoos.repository.ZooRepository;
+import io.swagger.annotations.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
 import java.net.URI;
 import java.net.URISyntaxException;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -30,20 +32,41 @@ public class AdminController {
     // Post endpoints
 
     // Post new zoo
+    @ApiOperation(value = "Create a new zoo", response = Zoo.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved list"),
+            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+            @ApiResponse(code = 403, message = "Accessing the resources you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach can not be found")
+    })
     @PostMapping("/zoos")
-    public Zoo createZoo(@RequestBody Zoo zoo) throws URISyntaxException {
+    public Zoo createZoo(@ApiParam(value = "Input for request body", required = true) @RequestBody Zoo zoo) throws URISyntaxException {
         return zoorepos.save(zoo);
     }
 
     // Post new phone
+    @ApiOperation(value = "Create a new phone", response = Telephone.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved list"),
+            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+            @ApiResponse(code = 403, message = "Accessing the resources you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach can not be found")
+    })
     @PostMapping("/phones")
-    public Telephone createPhone(@RequestBody Telephone phone) throws URISyntaxException {
+    public Telephone createPhone(@ApiParam(value = "Input for request body", required = true)@RequestBody Telephone phone) throws URISyntaxException {
         return phonerepos.save(phone);
     }
 
     // Post new animal
+    @ApiOperation(value = "Create a new animal", response = Animal.class)
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Successfully retrieved list"),
+            @ApiResponse(code = 401, message = "You are not authorized to view the resource"),
+            @ApiResponse(code = 403, message = "Accessing the resources you were trying to reach is forbidden"),
+            @ApiResponse(code = 404, message = "The resource you were trying to reach can not be found")
+    })
     @PostMapping("/animals")
-    public Animal createAnimal(@RequestBody Animal animal) throws URISyntaxException {
+    public Animal createAnimal(@ApiParam(value = "Input for request body", required = true) @RequestBody Animal animal) throws URISyntaxException {
         return animalrepos.save(animal);
     }
 
